@@ -19,7 +19,7 @@ import udemy.poo.interfaz.Actions;
 public class ImagenFondo implements Actions {
     private Image imagen = null;
     private Image imagenDos = null;
-    //private Image imagenTres = null;
+    private Image imagenTres = null;
     private Component componente;
     private int x = -20;
     private static ImagenFondo objetoUnico;
@@ -35,16 +35,16 @@ public class ImagenFondo implements Actions {
     private ImagenFondo() {
     }
     
-    public void configuracion(Component componente, String archivo, String personaje) {
+    public void configuracion(Component componente, String archivo, String personaje, String orbe) {
         this.componente = componente;
         tracker = new MediaTracker(componente);
         Toolkit herram = Toolkit.getDefaultToolkit();
         imagen = herram.getImage(getClass().getResource("/udemy/poo/recursos/" + archivo));
         imagenDos = herram.getImage(getClass().getResource("/udemy/poo/recursos/" + personaje));
-        //imagenTres = herram.getImage(getClass().getResource("/udemy/poo/recursos/" + megaman));
+        imagenTres = herram.getImage(getClass().getResource("/udemy/poo/recursos/" + orbe));
         tracker.addImage(imagen, 1);
         tracker.addImage(imagenDos, 2);
-        //tracker.addImage(imagenTres, 3);
+        tracker.addImage(imagenTres, 3);
         
         //Espera a que todas las imagenes sean cargadas
         try {
@@ -57,8 +57,8 @@ public class ImagenFondo implements Actions {
     @Override
     public void pintar(Graphics2D g) {
         g.drawImage(imagen, 0, 0, this.componente.getWidth(), this.componente.getHeight(), null);
-        g.drawImage(imagenDos, x + 40, 90, 300, 368, null);
-        //g.drawImage(imagenTres, x, 230, 50, 50, null);
+        g.drawImage(imagenDos, x + 40, 90, 270, 368, null);
+        g.drawImage(imagenTres, 450, 100, 50, 50, null);
     }
 
     @Override
