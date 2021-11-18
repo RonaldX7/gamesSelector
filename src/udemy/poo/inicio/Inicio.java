@@ -9,6 +9,7 @@ import javax.swing.Timer;
 import udemy.poo.elementos.ImagenFondo;
 import udemy.poo.game.GameModelNave;
 import udemy.poo.pantalla.Pantalla;
+import udemy.poo.sonido.Musica;
 
 /**
  *
@@ -17,6 +18,8 @@ import udemy.poo.pantalla.Pantalla;
 public class Inicio extends javax.swing.JFrame {
     private int fps = 30;
     private Timer tiempo;
+    private Musica music = new Musica("InTheEnd.mp3", "FinalFantasy.mp3");
+    Thread hilo = new Thread(music);
 
     /**
      * Creates new form Inicio
@@ -43,6 +46,7 @@ public class Inicio extends javax.swing.JFrame {
         fondoPantalla.configuracion(this.jPanel1, "ArbolDos.gif", "Girl.gif", "orbeReflex.png");
         //Añado los archivos a la pantalla
         ((Pantalla)this.jPanel1).getComponente().add(fondoPantalla);
+        hilo.start();
     }
     
     private void refresh() {
@@ -153,6 +157,8 @@ public class Inicio extends javax.swing.JFrame {
                 dialog.setVisible(true);
             }
         });
+        hilo.stop();
+        this.dispose();
     }//GEN-LAST:event_buttonNaveGameActionPerformed
 
     private void buttonOrbesGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOrbesGameActionPerformed
