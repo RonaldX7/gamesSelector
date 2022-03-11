@@ -1,1 +1,1 @@
-"Juego de bajo nivel basado en el paradigma de la programación orientada a objetos."
+Juego de bajo nivel basado en el paradigma de la programación orientada a objetos.
